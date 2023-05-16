@@ -1,0 +1,49 @@
+{% extends 'layout/base.html' %}
+
+{% block 'content' %}
+    <h1>Bienvenido {{ user }}</h1>
+    {% if user.perfil %}
+        <ul>
+            <li>Nombre: {{ user.perfil.nombre_completo }}</li>
+            <li>Celular: {{ user.perfil.celular }}</li>
+            <li>Codigo postal: {{ user.perfil.codigo_postal }}</li>
+            <li>Direccion: {{ user.perfil.direccion }}</li>
+            <li>Ciudad: {{ user.perfil.ciudad }}</li>
+            <li>Provincia: {{ user.perfil.provincia }}</li>
+            <li>Info. adicional {{ user.perfil.info_adicional }}</li>
+        </ul>
+    {% else %}
+        <p>No tenes datos de envio para este usuario</p>
+        
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary disabled" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Agregar datos
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'crearPerfil' %}" method="POST">
+                        {% csrf_token %}
+                        {% for campo in form %}
+                            {% if campo.label_tag == "User:" %}
+                                <p>hola</p>
+                            {% else %}
+                                <p>{{ campo.label_tag }}</p>
+                                <p>{{ campo }}</p>
+                            {% endif %}
+                        {% endfor %}
+                        <button type="submit" class="btn btn-primary" >Enviar</button>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock 'content' %}

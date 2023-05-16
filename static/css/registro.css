@@ -1,0 +1,101 @@
+:root {
+    --color-primary: #603333;
+    --color-text: #ffffff;
+    --color-secondary: #D1C28B;
+    --font-main: 'Montserrat Alternates', sans-serif;
+    --font-text: 'Zilla Slab', serif; /*300italic 400 500*/
+}
+
+.contenedor-grid{
+    display: flex;
+    justify-content: center;
+}
+
+.contenedor_registro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    margin: 50px 20px;
+    height: 500px;
+    justify-content: center;
+    border-radius: 20px;
+    font-weight: 600;
+    width: 100vw;
+}
+
+.contenedor_registro h1 {
+    color: var(--color-text) !important;
+    margin: 30px 0;
+}
+
+.contenedor_registro div {
+    font-size: 0.55rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start
+}
+
+.contenedor_registro form{
+    margin-bottom: 40px;
+}
+
+.contenedor_registro form p {
+    font-size: 2.9vw;
+}
+
+.contenedor_registro p {
+    margin: 1rem;
+}
+
+.contenedor_registro form p input {
+    border: none;
+    padding: 0 7px;
+    background-color: var(--color-primary);
+    color: var(--color-text);
+}
+
+.contenedor_registro form p input:focus {
+    outline: none;
+    border: 1.5px solid var(--color-secondary);
+    border-radius: 9px;
+    margin: 0;
+}
+
+.contenedor_registro form p input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.contenedor_registro a {
+    text-decoration: none;
+    color: var(--color-secondary);
+}
+
+.contenedor_registro a:hover {
+    text-shadow: 1px 1px 10px black;
+}
+
+.contenedor_registro form button {
+    background-color: var(--color-secondary);
+    border: none;
+    margin: 0 7px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.contenedor_registro form button:hover {
+    transition: 0.3s all;
+    transform: scale(1.05);
+}
+
+@media screen and (min-width: 650px) and (max-width:1440px){
+    .contenedor_registro {
+        width: 600px;
+    }
+
+    .contenedor_registro form p {
+        font-size: 1rem;
+    }
+}

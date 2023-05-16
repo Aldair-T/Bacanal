@@ -1,0 +1,128 @@
+:root {
+    --color-primary: #603333;
+    --color-text: #ffffff;
+    --color-secondary: #D1C28B;
+    --font-main: 'Montserrat Alternates', sans-serif;
+    --font-text: 'Zilla Slab', serif; /*300italic 400 500*/
+}
+
+.carrito h1 {
+    margin: 20px 0;
+}
+
+.contenedor_carrito{
+    margin: 0 10px;
+}
+
+.contenedor_producto_carrito {
+    width: 100%;
+    height: 150px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr 0.7fr;
+    grid-template-rows: 1fr 110px;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    grid-template-areas: 
+    "div1 div1 div2"
+    "div3 div4 div4";
+    justify-items: center;
+    text-align: center;
+    outline: 1px solid black;
+    font-family: var(--font-text);
+}
+.carrito-descrip {
+    font-size: 0.8rem;
+}
+
+.div1 {
+    grid-area: div1;
+    font-family: 'Zilla Slab';
+}
+
+.div2 {
+    grid-area: div2;
+    font-family: 'Zilla Slab';
+}
+
+.div3 {
+    grid-area: div3;
+}
+
+.div3 img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.div4 {
+    grid-area: div4;
+    margin: 20px 0;
+}
+
+.div4 input[type=number] {
+    width: 24px;
+    text-align: center;
+    border: 1px solid var(--color-secondary);
+}
+
+.div4 input[type=submit] {
+    width: 65px;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    box-shadow: 1px 1px 5px black;
+}
+
+.div4 input[type=submit]:hover{
+    background-color: var(--color-secondary);
+    color: black;
+}
+
+.resumen {
+    font-family: var(--font-main);
+    font-weight: 600;
+    border: 1px solid;
+    margin: 20px 9px;
+    text-align: center;
+    background-color: var(--color-secondary);
+    height: 250px;
+}
+
+.resumen h3{
+    margin: 10px 0;
+}
+
+hr {
+    margin: 0 3px;
+}
+
+.total p {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 10px;
+}
+
+.finalizar {
+    margin: 15px 0;
+}
+
+.carrito a {
+    font-family: var(--font-main);
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-primary);
+}
+
+@media screen and (min-width: 650px) and (max-width:1440px){
+    
+    .carrito {
+        display: grid;
+        grid-template-columns: 1fr 350px;
+    }
+
+    .contenedor_carrito {
+        margin-top: 20px;
+    }
+
+}

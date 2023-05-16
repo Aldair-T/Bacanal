@@ -1,0 +1,68 @@
+{% extends 'layout/base.html' %}
+
+{% block 'title' %}Carrito{% endblock 'title' %}
+
+{% block 'styles' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/carrito.css' %}">
+{% endblock 'styles' %}
+
+{% block 'content' %}
+    <h1>TU CARRITO</h1>
+    <section class="carrito">
+        
+        <div class="contenedor_carrito">
+            {% for producto in productos %}
+            <div class="contenedor_producto_carrito parent">
+                <div class="div1">
+                    <p>{{ producto.product }} </p>
+                </div>
+                <div class="div2">
+                    <a href="{% url 'eliminar' id=producto.id %}">Eliminar</a>
+                </div>
+                <div class="div3">
+                    <img src="{{ producto.product.image.url }}">
+                </div>
+                <div class="carrito-descrip div4">
+                    <div class="subtotal" style="display: none;">{{producto.precio_total}}</div>
+                    <p>{{ producto.amount }}u. &#160 x &#160 ${{ producto.precio_total }}</p>
+                    <form method="GET" action="{% url 'modificar' id=producto.id %}">
+                        <input type="number" name="actualizar" value="{{ producto.amount }}" min="1">
+                        <input type="submit" value="Actualizar">
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="resumen">
+            <div>
+                <h3>Resumen</h3>
+            </div>
+            <hr>
+            <div class="total">
+                <p>Sub-total: <span>--</span></p>
+                <p>Descuento: <span>--</span></p>
+                <p>Total: <span id="total"></span></p>
+            </div>
+            <hr>
+            <div class="finalizar">
+                <a href="#"> Finalizar compra</a>
+            </div>
+        </div>
+        <div class="finalizar">
+            <a href="{% url 'catalogo' %}"><< Seguir comprando</a>
+        </div>
+    </section>
+
+    <script>
+        var subtotals = document.getElementsByClassName("subtotal");
+        var total = 0;
+
+        for (var i = 0; i < subtotals.length; i++) {
+          total += parseFloat(subtotals[i].textContent);
+        }
+        
+        document.getElementById("total").textContent = "$"+" "+total.toFixed(2);
+      </script>  
+
+{% endblock 'content' %}

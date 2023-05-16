@@ -1,0 +1,200 @@
+:root {
+    --color-primary: #603333;
+    --color-text: #ffffff;
+    --color-secondary: #D1C28B;
+    --font-main: 'Montserrat Alternates', sans-serif; /* 500 600italic 600 700*/
+    --font-text: 'Zilla Slab', serif; /*300italic 400 500*/
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body::-webkit-scrollbar {
+    width: 1em;
+}
+ 
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+
+
+.logo {
+    width: 140px;
+}
+
+.nav-link {
+    color: var(--color-primary) !important;
+    font-family: var(--font-main);
+}
+
+.nav-link:hover{
+    color: var(--color-secondary) !important;
+}
+
+li > .dropdown-item:active {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+h1 {
+    color: var(--color-primary) !important;
+    font-family: var(--font-main);
+    font-weight: 600;
+    font-style: italic;
+}
+
+.contenedor_busqueda {
+    background-image: url('../image/fondo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search {
+    width: 80% !important;
+    height: 28%;
+}
+
+.search input[type=submit]{
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.search input[type=submit]:hover{
+    background-color: var(--color-secondary);
+    color: black;
+}
+
+.contenedor_descrip {
+    font-family: var(--font-main) !important;
+    text-align: center;
+    color: var(--color-primary);
+}
+
+.descrip {
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 50px 0 0 0;
+}
+
+.eslogan {
+    font-weight: 600;
+    font-style: italic;
+    font-size: 0.8rem;
+}
+
+/* ESTILO SLIDER */
+
+.marcas {
+    margin: 80px 0;
+}
+
+.contenedor-slider{
+    position: relative;
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slider{
+    display: flex;
+    width: 300%; /* Esto hay que ir ajustando dependiendo la cantidad de imagenes */
+    height: 230px;
+    margin-left: -100%;
+}
+
+.slider_seccion{
+    width: 100%;
+    margin: 15px;
+}
+
+.slider_div{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.slider_div div {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider_div img {
+    filter: drop-shadow(10px 10px 10px black);
+}
+
+.contenedor-btns {
+    display: flex;
+    justify-content: center;
+    margin-top: -9px;
+}
+
+.slider_btn {
+    width: 40px;
+    font-size: 30px;
+    text-align: center;
+    cursor: default;
+    color: var(--color-primary);
+    border: 1px solid var(--color-text);
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.slider_btn:hover{
+    transition: 0.4s ease;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.contenedor-footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+    background-color: var(--color-primary);
+    text-align: center;
+    margin-top: 30px;
+}
+
+.contenedor-redes img{
+    width: 30px;
+    filter: invert(1);
+    margin: 20px 1.5rem;
+}
+
+.contenedor-info a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    font-family: var(--font-text);
+    font-weight: 500;
+    color: white;
+    margin-top: 0.4rem;
+}
+
+.contenedor-footer p {
+    color: white;
+    margin-top: 25px;
+}

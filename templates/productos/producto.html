@@ -1,0 +1,98 @@
+{% extends 'layout/base.html' %}
+
+{% block 'title' %}Catalogo{% endblock 'title' %}
+
+{% block 'styles' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/catalogo.css' %}">
+{% endblock 'styles' %}
+
+{% block 'content' %}
+
+    {% include 'layout/busqueda.html' %} 
+    <h1>FERNET</h1>
+    <section class="productos">
+        {% for fernet in fernets %}
+        <div class="contenedor_producto">
+            <div class="contenedor-imagen">
+                <img src="{{ fernet.image.url }}">
+            </div>
+            <div class="contenedor_descrip">
+                <p>{{ fernet.description }}</p>
+                <div class="añadir">
+                    <p>${{ fernet.price }}</p>
+                    {% if fernet.stock == 0 %}
+                        <input type="button" value="Sin Stock">
+                    {% else %}
+                        <form method="GET" action="{% url 'añadir' id=fernet.id %}">
+                            <input type="number" name="añadir" value="1" min="1">
+                            {% if request.user.is_authenticated %}
+                                <input type="submit" value="+">
+                            {% else %}
+                                <button type="button" class="emergente" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    +
+                                </button>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                        <p style="text_aling: center">Debe iniciar sesion o registrarse</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                        <a class="btn btn-outline-primary" style="--bs-btn-color: black;" href="{% url 'account_login' %}" role="button">Iniciar sesion</a>
+                                        <a class="btn btn-outline-primary" style="--bs-btn-color: black;" href="{% url 'account_signup' %}" role="button">Registrarse</a>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            {% endif %}    
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+    <form action="{% url 'busqueda' %}" method="GET" class="form-vermas">
+        <input type="hidden" name="search" value="fernet">
+        <input type="submit" value="Ver mas >>" class="ver_mas">
+    </form>
+    <h1>VODKA</h1>
+    <section class="productos">
+        {% for vodka in vodkas %}
+        <div class="contenedor_producto">
+            <div class="contenedor-imagen">
+                <img src="{{ vodka.image.url }}">
+            </div>
+            <div class="contenedor_descrip">
+                <p>{{ vodka.description }}</p>
+                <div class="añadir">
+                    <p>${{ vodka.price }}</p>
+                    {% if vodka.stock == 0 %}
+                        <input type="button" value="Sin Stock">
+                    {% else %}
+                        <form method="GET" action="{% url 'añadir' id=vodka.id %}">
+                            <input type="number" name="añadir" value="1" min="1">
+                            {% if request.user.is_authenticated %}
+                                <input type="submit" value="+">
+                            {% else %}
+                                <button type="button" class="emergente" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    +
+                                </button>
+                            {% endif %}
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+    <form action="{% url 'busqueda' %}" method="GET" class="form-vermas">
+        <input type="hidden" name="search" value="vodka">
+        <input type="submit" value="Ver mas >>" class="ver_mas">
+    </form>
+
+{% endblock 'content' %}

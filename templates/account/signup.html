@@ -1,0 +1,27 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}Registrarse{% endblock %}
+
+{% block content %}
+
+<div class="contenedor-grid">
+  <div class="contenedor_registro">
+    <h1>Registrarse</h1>
+
+    <p>¿Ya tiene una cuenta? Por favor <a href="{{ login_url }}">inicie sesión</a>.</p>
+
+    <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+      {% csrf_token %}
+      <div>
+        {{ form.as_p }}
+      </div>
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+      <button type="submit">Registrarse &raquo;</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

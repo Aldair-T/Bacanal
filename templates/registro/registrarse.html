@@ -1,0 +1,25 @@
+{% extends 'layout/base.html' %}
+
+{% block 'title' %}Registrase{% endblock 'title' %}
+
+{% block 'content' %}
+    <a href="{% url 'registro' %}">Volver atras</a>
+
+    <form action="{% url 'registrarse' %}" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <div>
+            <input type="submit" name="Crear">
+        </div>
+    </form>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="alerta" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endblock 'content' %}

@@ -1,0 +1,126 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+
+{% block 'title' %} Inicio {% endblock 'title' %}
+
+{% block 'content' %}
+    {% include 'layout/busqueda.html' %}
+    <div class="contenedor_descrip">
+        <p class="descrip">En Bacanal encontrarás una amplia variedad de bebidas para cada ocasión.</p>
+        <p class="eslogan">Un brindis por los buenos momentos</p>
+    </div>
+    <section class="marcas" id="proyectos">
+        <div class="contenedor-slider">
+            <div class="slider" id="slider">
+                <article class="slider_seccion">
+                    <div class="slider_div">
+                        <div>
+                            <img src="{% static 'image/stella-logo.png' %}">
+                        </div>
+                    </div>
+                </article>
+                <article class="slider_seccion">
+                    <div class="slider_div">
+                        <div>
+                            <img src="{% static 'image/absolut-logo.png' %}">
+                        </div>
+                    </div>
+                </article>
+                <article class="slider_seccion">
+                    <div class="slider_div">
+                        <div>
+                            <img src="{% static 'image/brahma-logo.png' %}">
+                        </div>
+                    </div>
+                </article>
+                <article class="slider_seccion">
+                    <div class="slider_div">
+                        <div>
+                            <img src="{% static 'image/branca-logo.png' %}">
+                        </div>
+                    </div>
+                </article>
+                <article class="slider_seccion">
+                    <div class="slider_div">
+                        <div>
+                            <img src="{% static 'image/campari-logo.png' %}">
+                        </div>
+                    </div>
+                </article>
+                <article class="slider_seccion">
+                    <div class="slider_div">
+                        <div>
+                            <img src="{% static 'image/Heineken-logo.png' %}">
+                        </div>
+                    </div>
+                </article>
+                <article class="slider_seccion">
+                    <div class="slider_div">
+                        <div>
+                            <img src="{% static 'image/jhonnie-logo.png' %}">
+                        </div>
+                    </div>
+                </article>
+                <article class="slider_seccion">
+                    <div class="slider_div">
+                        <div>
+                            <img src="{% static 'image/smirnoff-logo.png' %}">
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="contenedor-btns">
+                <div class="slider_btn slider_btn-izq" id="btn-der"></div>
+                <div class="slider_btn slider_btn-der" id="btn-izq"></div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        /* Slider configuracion */
+        const slider = document.querySelector("#slider");
+        let sliderSeccion = document.querySelectorAll(".slider_seccion");
+        let sliderSeccionLast = sliderSeccion[sliderSeccion.length-1];
+
+        const btnIzq = document.querySelector("#btn-izq");
+        const btnDer = document.querySelector("#btn-der");
+
+        slider.insertAdjacentElement('afterbegin', sliderSeccionLast);
+
+        function moverDer() {
+            let sliderSeccionFirst = document.querySelectorAll(".slider_seccion")[0];
+            slider.style.marginLeft = "-200%";
+            slider.style.transition = "all 2s ease-out" /*Hay que ajustar el tiempo para que sea mas suave el movimiento*/
+            setTimeout(function(){
+                slider.style.transition = "none";
+                slider.insertAdjacentElement('beforeend', sliderSeccionFirst);
+                slider.style.marginLeft = "-100%"
+            }, 500);
+        }
+
+        function moverIzq() {
+            let sliderSeccion = document.querySelectorAll(".slider_seccion");
+            let sliderSeccionLast = sliderSeccion[sliderSeccion.length-1];
+            slider.style.marginLeft = "0";
+            slider.style.transition = "all 2s ease-out" 
+            setTimeout(function(){
+                slider.style.transition = "none";
+                slider.insertAdjacentElement('afterbegin', sliderSeccionLast);
+                slider.style.marginLeft = "-100%"
+            }, 500);
+        }
+
+        btnIzq.addEventListener('click', function(){
+            moverDer();
+        })
+
+        btnDer.addEventListener('click', function(){
+            moverIzq();
+        })
+
+        setInterval(function(){
+            moverDer();
+        }, 4000);
+    </script>
+{% endblock 'content' %}

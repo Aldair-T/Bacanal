@@ -1,0 +1,19 @@
+No borre los demas archivos xq puede darme errores al futuro
+Asi q cree este archivo para darme una pequeña guia si quiero
+reutilizar algo de aca en el futuro, estos son los archivos que cambie.
+
+BASE.HTML: Borre los mensajes y el menu que venia por defecto
+            y puse el mio, aca hay que poner los CDN de bootstrap y cambiar los
+            titulos si es necesario
+
+LOGIN.HTML: Borre la parte de las cuentas providers (iniciar sesion con
+            otras plataformas), no se necesita cambiar mas nada
+
+SIGNUP.HTML: No necesita borrar nada solo cambiar a español
+
+PASSWORD_RESET.HTML: No necesita cambiar nada solo a español
+
+EMAIL_CONFIRM.HTML: Es el mas complicado de leer pero no tiene mucha logica
+                    solo es un texto para que confirme, no cambie nada pero se sobre entiende
+                    
+VERIFICATION_SENT.HTML: Solo es un texto al cual lo cambie a español
