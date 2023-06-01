@@ -29,7 +29,7 @@ DEBUG = True
 #DEBUG = 'RENDER' not in os.environ
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [*]
 
 #RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 #if RENDER_EXTERNAL_HOSTNAME:
@@ -155,10 +155,14 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [
+"""STATICFILES_DIRS = [
     BASE_DIR / "static",
     '/var/www/static/',
-]
+]"""
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
+
 # Following settings only make sense on production and may break development environments.
 """if not DEBUG:
     # Tell Django to copy statics to the `staticfiles` directory
