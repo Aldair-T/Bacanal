@@ -102,12 +102,12 @@ WSGI_APPLICATION = 'Bacanal.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
+        "ENGINE": "django.db.backends.postgresql",
         "NAME": "railway",
-        "USER": "root",
-        "PASSWORD": "WSXGyJ31a3nlO4HtXe4I",
-        "HOST": "containers-us-west-1.railway.app",
-        "PORT": "6502",
+        "USER": "postgres",
+        "PASSWORD": "dp7nNHb4JkeYA6N90vw3",
+        "HOST": "containers-us-west-107.railway.app",
+        "PORT": "7863",
     }
 }
 
