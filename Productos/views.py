@@ -3,6 +3,7 @@ from .models import Products, Carrito, Lista
 from django.http import HttpResponse
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 
 def mostrarProductos(request):
@@ -37,6 +38,7 @@ def agregaraCarrito(request, id):
     else:
     #productos = Lista.objects.filter(order=carrito_id) esta es la forma de ingresar a la lista de productos
         Lista.objects.create(product=producto_agg, order=carrito, amount=cantidad, price=producto_agg.price)
+    messages.success(request, "El producto se agrego al carrito")
     return redirect('catalogo')
 
 def productos(request):
